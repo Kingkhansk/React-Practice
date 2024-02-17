@@ -85,33 +85,39 @@ function App() {
             <option value="incomplete">Show Incomplete</option>
           </select>
         </div>
-        {todos.length === 0 && <div className='bg-red-500 sm:w-1/4 m-auto'>No todos to display</div>}
         {todos.filter((item) => (
-            selectedValue === 'all' ||
-            (selectedValue === 'completed' && item.isCompleted) ||
-            (selectedValue === 'incomplete' && !item.isCompleted)
+          selectedValue === 'all' ||
+          (selectedValue === 'completed' && item.isCompleted) ||
+          (selectedValue === 'incomplete' && !item.isCompleted)
         )).map((item) => (
 
-            <div key={item.id} className='flex justify-between my-1 m-auto mx-2'>
-              <input type="checkbox" name={item.id} checked={item.isCompleted} value={item.isCompleted} onChange={handleCheckbox} />
-              <div className={item.isCompleted ? 'line-through' : undefined} >
-                <span>{item.todo}</span>
-              </div>
-              <div className='flex items-center'>
-                <button onClick={(e) => handleEdit(e, item.id)} className='bg-purple-700 px-2 py-1 text-white rounded hover:bg-purple-950 mx-2'>
-                  <FaRegEdit />
-                </button>
-                {/* <button onClick={handleDelete} id={item.id} className='bg-purple-700 px-2 py-1 text-white rounded hover:bg-purple-950'>
+          <div key={item.id} className='flex justify-between my-1 m-auto mx-2'>
+            <input type="checkbox" name={item.id} checked={item.isCompleted} value={item.isCompleted} onChange={handleCheckbox} />
+            <div className={item.isCompleted ? 'line-through' : undefined} >
+              <span>{item.todo}</span>
+            </div>
+            <div className='flex items-center'>
+              <button onClick={(e) => handleEdit(e, item.id)} className='bg-purple-700 px-2 py-1 text-white rounded hover:bg-purple-950 mx-2'>
+                <FaRegEdit />
+              </button>
+              {/* <button onClick={handleDelete} id={item.id} className='bg-purple-700 px-2 py-1 text-white rounded hover:bg-purple-950'>
                 <MdDeleteOutline />
               </button> */}
-                {/* we can also pass id like that */}
-                <button onClick={(e) => handleDelete(e, item.id)} className='bg-purple-700 px-2 py-1 text-white rounded hover:bg-purple-950'>
-                  <MdDeleteOutline />
-                </button>
-              </div>
-
+              {/* we can also pass id like that */}
+              <button onClick={(e) => handleDelete(e, item.id)} className='bg-purple-700 px-2 py-1 text-white rounded hover:bg-purple-950'>
+                <MdDeleteOutline />
+              </button>
             </div>
-          ))}
+
+          </div>
+        ))}
+        {todos.filter((item) => (
+          selectedValue === 'all' ||
+          (selectedValue === 'completed' && item.isCompleted) ||
+          (selectedValue === 'incomplete' && !item.isCompleted)
+        )).length === 0 && (
+          <div className='bg-red-300 sm:w-1/4 m-auto mt-1'>No todos to display</div>
+        )}
       </section>
 
     </>
