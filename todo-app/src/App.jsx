@@ -119,7 +119,6 @@ function App() {
           <div className='bg-red-300 sm:w-1/4 m-auto mt-1'>No todos to display</div>
         )}
       </section>
-
     </>
   )
 }
