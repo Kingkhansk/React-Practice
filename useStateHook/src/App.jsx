@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <p>Count is {count}</p>
-      <button onClick={()=>setCount(count+1)}>-</button>
-      <button>+</button>
+      <button onClick={()=>setCount(count-1)}>-</button>
+      <button onClick={()=>setCount(count+1)}>+</button>
     </>
   )
 }
